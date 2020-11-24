@@ -13,7 +13,7 @@ public:
     calculator_ver2(QWidget *parent = Q_NULLPTR);
 	
 	QString progress = "";
-	QString result = '0';
+	QString finalResult = '0';
 
 public slots:
     void num0_Clicked();

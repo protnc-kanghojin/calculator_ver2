@@ -204,11 +204,11 @@ void calculator_ver2::remainderBtn_Clicked()
 
 void calculator_ver2::resultBtn_Clicked()
 {
-	mainCalculator inputFormula;
-	result = ui.progress->text();
-	QByteArray byteName = result.toLocal8Bit();
-	char* cfileNmae = byteName.data();
-	double answer = inputFormula.calculate(cfileNmae);
+	mainCalculator myInput;
+	finalResult = ui.progress->text();
+	QByteArray byteName = finalResult.toLocal8Bit();
+	char* cfileName = byteName.data();
+	double answer = myInput.calculate(cfileName);
 	QString s = QString::number(answer);
 	ui.result->setText(s);
 }
@@ -223,7 +223,7 @@ void calculator_ver2::deleteAll_Clicked()
 	ui.hexNumber->setText("");
 
 	progress = "";
-	result = '0';
+	finalResult = '0';
 }
 
 void calculator_ver2::numberSystemConversion()
