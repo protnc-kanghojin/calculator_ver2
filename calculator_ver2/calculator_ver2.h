@@ -11,6 +11,8 @@ class calculator_ver2 : public QMainWindow
 
 public:
     calculator_ver2(QWidget *parent = Q_NULLPTR);
+	
+	QString progress = "";
 
 public slots:
     void num0_Clicked();
@@ -23,6 +25,8 @@ public slots:
 	void num7_Clicked();
 	void num8_Clicked();
 	void num9_Clicked();
+
+	void deleteAll();
 
 private:
     Ui::calculator_ver2Class ui;
