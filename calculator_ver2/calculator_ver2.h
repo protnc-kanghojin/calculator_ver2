@@ -1,7 +1,7 @@
 #pragma once
 
 #include <QtWidgets/QMainWindow>
-#include <QKeyEvent>>
+#include <QKeyEvent>
 
 #include "ui_calculator_ver2.h"
 
@@ -13,6 +13,7 @@ public:
     calculator_ver2(QWidget *parent = Q_NULLPTR);
 	
 	QString progress = "";
+	QString result = '0';
 
 public slots:
     void num0_Clicked();

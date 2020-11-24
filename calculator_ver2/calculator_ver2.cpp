@@ -1,4 +1,6 @@
 #include "calculator_ver2.h"
+#include "stack.h"
+#include <cstring>
 
 calculator_ver2::calculator_ver2(QWidget *parent)
     : QMainWindow(parent)
@@ -7,26 +9,26 @@ calculator_ver2::calculator_ver2(QWidget *parent)
     this->setFixedSize(500, 300);
 
 	// Button click function
-	connect(ui.num0Btn, &QPushButton::clicked, this, &calculator_ver2::num0_Clicked);
-	connect(ui.num1Btn, &QPushButton::clicked, this, &calculator_ver2::num1_Clicked);
-	connect(ui.num2Btn, &QPushButton::clicked, this, &calculator_ver2::num2_Clicked);
-	connect(ui.num3Btn, &QPushButton::clicked, this, &calculator_ver2::num3_Clicked);
-	connect(ui.num4Btn, &QPushButton::clicked, this, &calculator_ver2::num4_Clicked);
-	connect(ui.num5Btn, &QPushButton::clicked, this, &calculator_ver2::num5_Clicked);
-	connect(ui.num6Btn, &QPushButton::clicked, this, &calculator_ver2::num6_Clicked);
-	connect(ui.num7Btn, &QPushButton::clicked, this, &calculator_ver2::num7_Clicked);
-	connect(ui.num8Btn, &QPushButton::clicked, this, &calculator_ver2::num8_Clicked);
-	connect(ui.num9Btn, &QPushButton::clicked, this, &calculator_ver2::num9_Clicked);
+	connect(ui.num0Btn,		 &QPushButton::clicked, this, &calculator_ver2::num0_Clicked);
+	connect(ui.num1Btn,		 &QPushButton::clicked, this, &calculator_ver2::num1_Clicked);
+	connect(ui.num2Btn,		 &QPushButton::clicked, this, &calculator_ver2::num2_Clicked);
+	connect(ui.num3Btn,		 &QPushButton::clicked, this, &calculator_ver2::num3_Clicked);
+	connect(ui.num4Btn,		 &QPushButton::clicked, this, &calculator_ver2::num4_Clicked);
+	connect(ui.num5Btn,		 &QPushButton::clicked, this, &calculator_ver2::num5_Clicked);
+	connect(ui.num6Btn,		 &QPushButton::clicked, this, &calculator_ver2::num6_Clicked);
+	connect(ui.num7Btn,		 &QPushButton::clicked, this, &calculator_ver2::num7_Clicked);
+	connect(ui.num8Btn,		 &QPushButton::clicked, this, &calculator_ver2::num8_Clicked);
+	connect(ui.num9Btn,		 &QPushButton::clicked, this, &calculator_ver2::num9_Clicked);
 
-	connect(ui.plusBtn, &QPushButton::clicked, this, &calculator_ver2::plusBtn_Clicked);
-	connect(ui.minusBtn, &QPushButton::clicked, this, &calculator_ver2::minusBtn_Clicked);
-	connect(ui.multiplyBtn, &QPushButton::clicked, this, &calculator_ver2::multiplyBtn_Clicked);
-	connect(ui.divisionBtn, &QPushButton::clicked, this, &calculator_ver2::divisionBtn_Clicked);
+	connect(ui.plusBtn,		 &QPushButton::clicked, this, &calculator_ver2::plusBtn_Clicked);
+	connect(ui.minusBtn,	 &QPushButton::clicked, this, &calculator_ver2::minusBtn_Clicked);
+	connect(ui.multiplyBtn,  &QPushButton::clicked, this, &calculator_ver2::multiplyBtn_Clicked);
+	connect(ui.divisionBtn,  &QPushButton::clicked, this, &calculator_ver2::divisionBtn_Clicked);
 	connect(ui.remainderBtn, &QPushButton::clicked, this, &calculator_ver2::remainderBtn_Clicked);
-	connect(ui.resultBtn, &QPushButton::clicked, this, &calculator_ver2::resultBtn_Clicked);
+	connect(ui.resultBtn,	 &QPushButton::clicked, this, &calculator_ver2::resultBtn_Clicked);
 
 	// Calcuation option
-	connect(ui.delAllBtn, &QPushButton::clicked, this, &calculator_ver2::deleteAll_Clicked);
+	connect(ui.delAllBtn,	 &QPushButton::clicked, this, &calculator_ver2::deleteAll_Clicked);
 }
 
 void calculator_ver2::keyPressEvent(QKeyEvent* event)
@@ -202,7 +204,13 @@ void calculator_ver2::remainderBtn_Clicked()
 
 void calculator_ver2::resultBtn_Clicked()
 {
-	numberSystemConversion();
+	mainCalculator inputFormula;
+	result = ui.progress->text();
+	QByteArray byteName = result.toLocal8Bit();
+	char* cfileNmae = byteName.data();
+	double answer = inputFormula.calculate(cfileNmae);
+	QString s = QString::number(answer);
+	ui.result->setText(s);
 }
 
 void calculator_ver2::deleteAll_Clicked()
@@ -213,7 +221,9 @@ void calculator_ver2::deleteAll_Clicked()
 	ui.octNumber->setText("");
 	ui.decNumber->setText("");
 	ui.hexNumber->setText("");
+
 	progress = "";
+	result = '0';
 }
 
 void calculator_ver2::numberSystemConversion()
