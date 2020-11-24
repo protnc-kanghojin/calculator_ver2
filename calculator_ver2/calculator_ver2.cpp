@@ -211,6 +211,8 @@ void calculator_ver2::resultBtn_Clicked()
 	double answer = myInput.calculate(cfileName);
 	QString s = QString::number(answer);
 	ui.result->setText(s);
+
+	numberSystemConversion();
 }
 
 void calculator_ver2::deleteAll_Clicked()
@@ -236,24 +238,24 @@ void calculator_ver2::numberSystemConversion()
 
 void calculator_ver2::decToBin()
 {
-	QString bin = QString("%1").arg(ui.progress->text().toInt(), 0, 2);
+	QString bin = QString("%1").arg(ui.result->text().toInt(), 0, 2);
 	ui.binNumber->setText(bin);
 }
 
 void calculator_ver2::decToOct()
 {
-	QString oct = QString("%1").arg(ui.progress->text().toInt(), 0, 8);
+	QString oct = QString("%1").arg(ui.result->text().toInt(), 0, 8);
 	ui.octNumber->setText(oct);
 }
 
 void calculator_ver2::decToDec()
 {
-	QString dec = QString("%1").arg(ui.progress->text().toInt(), 0, 10);
+	QString dec = QString("%1").arg(ui.result->text().toInt(), 0, 10);
 	ui.decNumber->setText(dec);
 }
 
 void calculator_ver2::decToHex()
 {
-	QString hex = QString("%1").arg(ui.progress->text().toInt(), 0, 16);
+	QString hex = QString("%1").arg(ui.result->text().toInt(), 0, 16);
 	ui.hexNumber->setText(hex);
 }
