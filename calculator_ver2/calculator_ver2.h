@@ -25,6 +25,11 @@ public slots:
 	void num7_Clicked();
 	void num8_Clicked();
 	void num9_Clicked();
+	void plusBtn_Clicked();
+	void minusBtn_Clicked();
+	void multiplyBtn_Clicked();
+	void divisionBtn_Clicked();
+	void remainderBtn_Clicked();
 
 	void deleteAll();
 

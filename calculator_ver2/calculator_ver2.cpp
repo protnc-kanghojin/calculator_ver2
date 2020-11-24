@@ -6,7 +6,7 @@ calculator_ver2::calculator_ver2(QWidget *parent)
     ui.setupUi(this);
     this->setFixedSize(500, 400);
 
-	// Number button click function
+	// Button click function
 	connect(ui.num0Btn, &QPushButton::clicked, this, &calculator_ver2::num0_Clicked);
 	connect(ui.num1Btn, &QPushButton::clicked, this, &calculator_ver2::num1_Clicked);
 	connect(ui.num2Btn, &QPushButton::clicked, this, &calculator_ver2::num2_Clicked);
@@ -17,6 +17,11 @@ calculator_ver2::calculator_ver2(QWidget *parent)
 	connect(ui.num7Btn, &QPushButton::clicked, this, &calculator_ver2::num7_Clicked);
 	connect(ui.num8Btn, &QPushButton::clicked, this, &calculator_ver2::num8_Clicked);
 	connect(ui.num9Btn, &QPushButton::clicked, this, &calculator_ver2::num9_Clicked);
+	connect(ui.plusBtn, &QPushButton::clicked, this, &calculator_ver2::plusBtn_Clicked);
+	connect(ui.minusBtn, &QPushButton::clicked, this, &calculator_ver2::minusBtn_Clicked);
+	connect(ui.multiplyBtn, &QPushButton::clicked, this, &calculator_ver2::multiplyBtn_Clicked);
+	connect(ui.divisionBtn, &QPushButton::clicked, this, &calculator_ver2::divisionBtn_Clicked);
+	connect(ui.remainderBtn, &QPushButton::clicked, this, &calculator_ver2::remainderBtn_Clicked);
 
 	// Calcuation option
 	connect(ui.delAllBtn, &QPushButton::clicked, this, &calculator_ver2::deleteAll);
@@ -64,6 +69,26 @@ void calculator_ver2::keyPressEvent(QKeyEvent* event)
 
 	case Qt::Key_9:
 		num9_Clicked();
+		break;
+
+	case Qt::Key_Plus:
+		plusBtn_Clicked();
+		break;
+
+	case Qt::Key_Minus:
+		minusBtn_Clicked();
+		break;
+
+	case Qt::Key_Asterisk:
+		multiplyBtn_Clicked();
+		break;
+
+	case Qt::Key_Slash:
+		divisionBtn_Clicked();
+		break;
+
+	case Qt::Key_Percent:
+		remainderBtn_Clicked();
 		break;
 
 	case Qt::Key_Delete:
@@ -132,6 +157,36 @@ void calculator_ver2::num8_Clicked()
 void calculator_ver2::num9_Clicked()
 {
 	progress += '9';
+	ui.progress->setText(progress);
+}
+
+void calculator_ver2::plusBtn_Clicked()
+{
+	progress += '+';
+	ui.progress->setText(progress);
+}
+
+void calculator_ver2::minusBtn_Clicked()
+{
+	progress += '-';
+	ui.progress->setText(progress);
+}
+
+void calculator_ver2::multiplyBtn_Clicked()
+{
+	progress += '*';
+	ui.progress->setText(progress);
+}
+
+void calculator_ver2::divisionBtn_Clicked()
+{
+	progress += '/';
+	ui.progress->setText(progress);
+}
+
+void calculator_ver2::remainderBtn_Clicked()
+{
+	progress += '%';
 	ui.progress->setText(progress);
 }
 
