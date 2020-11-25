@@ -31,9 +31,10 @@ public slots:
 	void minusBtn_Clicked();
 	void multiplyBtn_Clicked();
 	void divisionBtn_Clicked();
-	void remainderBtn_Clicked();
 	void resultBtn_Clicked();
+
 	void deleteAll_Clicked();
+	void deleteOne_Clicked();
 
 	void numberSystemConversion();
 	void decToBin();

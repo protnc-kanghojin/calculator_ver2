@@ -6,7 +6,7 @@ calculator_ver2::calculator_ver2(QWidget *parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
-    this->setFixedSize(500, 300);
+    this->setFixedSize(250, 380);
 
 	// Button click function
 	connect(ui.num0Btn,		 &QPushButton::clicked, this, &calculator_ver2::num0_Clicked);
@@ -20,15 +20,15 @@ calculator_ver2::calculator_ver2(QWidget *parent)
 	connect(ui.num8Btn,		 &QPushButton::clicked, this, &calculator_ver2::num8_Clicked);
 	connect(ui.num9Btn,		 &QPushButton::clicked, this, &calculator_ver2::num9_Clicked);
 
+	// Calculation option
 	connect(ui.plusBtn,		 &QPushButton::clicked, this, &calculator_ver2::plusBtn_Clicked);
-	connect(ui.minusBtn,	 &QPushButton::clicked, this, &calculator_ver2::minusBtn_Clicked);
-	connect(ui.multiplyBtn,  &QPushButton::clicked, this, &calculator_ver2::multiplyBtn_Clicked);
-	connect(ui.divisionBtn,  &QPushButton::clicked, this, &calculator_ver2::divisionBtn_Clicked);
-	connect(ui.remainderBtn, &QPushButton::clicked, this, &calculator_ver2::remainderBtn_Clicked);
-	connect(ui.resultBtn,	 &QPushButton::clicked, this, &calculator_ver2::resultBtn_Clicked);
+	connect(ui.minusBtn,		 &QPushButton::clicked, this, &calculator_ver2::minusBtn_Clicked);
+	connect(ui.multiplyBtn,	 &QPushButton::clicked, this, &calculator_ver2::multiplyBtn_Clicked);
+	connect(ui.divisionBtn,	 &QPushButton::clicked, this, &calculator_ver2::divisionBtn_Clicked);
+	connect(ui.resultBtn,		 &QPushButton::clicked, this, &calculator_ver2::resultBtn_Clicked);
 
-	// Calcuation option
-	connect(ui.delAllBtn,	 &QPushButton::clicked, this, &calculator_ver2::deleteAll_Clicked);
+	connect(ui.delAllBtn,		 &QPushButton::clicked, this, &calculator_ver2::deleteAll_Clicked);
+	connect(ui.delOneBtn,	 &QPushButton::clicked, this, &calculator_ver2::deleteOne_Clicked);
 }
 
 void calculator_ver2::keyPressEvent(QKeyEvent* event)
@@ -91,10 +91,6 @@ void calculator_ver2::keyPressEvent(QKeyEvent* event)
 		divisionBtn_Clicked();
 		break;
 
-	case Qt::Key_Percent:
-		remainderBtn_Clicked();
-		break;
-
 	case Qt::Key_Enter:
 		resultBtn_Clicked();
 		break;
@@ -107,6 +103,10 @@ void calculator_ver2::keyPressEvent(QKeyEvent* event)
 		deleteAll_Clicked();
 		break;
 		
+	case Qt::Key_Backspace:
+		deleteOne_Clicked();
+		break;
+
 	default:
 		break;
 	}
@@ -196,19 +196,13 @@ void calculator_ver2::divisionBtn_Clicked()
 	ui.progress->setText(progress);
 }
 
-void calculator_ver2::remainderBtn_Clicked()
-{
-	progress += '%';
-	ui.progress->setText(progress);
-}
-
 void calculator_ver2::resultBtn_Clicked()
 {
-	mainCalculator myInput;
+	mainCalculator formulaInput;
 	finalResult = ui.progress->text();
 	QByteArray byteName = finalResult.toLocal8Bit();
 	char* cfileName = byteName.data();
-	double answer = myInput.calculate(cfileName);
+	double answer = formulaInput.calculate(cfileName);
 	QString s = QString::number(answer);
 	ui.result->setText(s);
 
@@ -226,6 +220,12 @@ void calculator_ver2::deleteAll_Clicked()
 
 	progress = "";
 	finalResult = '0';
+}
+
+void calculator_ver2::deleteOne_Clicked()
+{
+	progress.chop(1);
+	ui.progress->setText(progress);
 }
 
 void calculator_ver2::numberSystemConversion()
