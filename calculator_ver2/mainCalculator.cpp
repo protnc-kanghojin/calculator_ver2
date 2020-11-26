@@ -11,13 +11,13 @@ int mainCalculator::priority(char ch)
 double mainCalculator::calculate(char infix[])
 {
 	for (int i = 0; i < 100; i++) buffer[i] = infix[i];
-	infixTopostfix();
+	infixToPostfix();
 
 	return result();
 }
 
 
-void mainCalculator::infixTopostfix()
+void mainCalculator::infixToPostfix()
 {
 	int i = 0, j = 0;
 	char ch;
@@ -55,8 +55,8 @@ void mainCalculator::infixTopostfix()
 		postfix[j++] = ch;
 		postfix[j++] = ' ';
 	}
-	postfix[j] = NULL;
 
+	postfix[j] = NULL;
 }
 
 

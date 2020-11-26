@@ -45,7 +45,7 @@ private:
 	stackInt stackOne;
 	stackChar stackTwo;
 
-	void infixTopostfix();
+	void infixToPostfix();
 	int result();
 	int priority(char);
 
