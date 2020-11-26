@@ -16,6 +16,7 @@ public:
 	QString finalResult = '0';
 
 public slots:
+	// Number button
     void num0_Clicked();
 	void num1_Clicked();
 	void num2_Clicked();
@@ -27,24 +28,33 @@ public slots:
 	void num8_Clicked();
 	void num9_Clicked();
 
+	// Four rules calculation button
 	void plusBtn_Clicked();
 	void minusBtn_Clicked();
 	void multiplyBtn_Clicked();
 	void divisionBtn_Clicked();
 	void resultBtn_Clicked();
 
+	// Function button
 	void deleteAll_Clicked();
 	void deleteOne_Clicked();
 
+	// Number system conversion
 	void numberSystemConversion();
 	void decToBin();
 	void decToOct();
 	void decToDec();
 	void decToHex();
 
+	// Number system mode alternation
+	void binSystemMode();
+	void octSystemMode();
+	void decSystemMode();
+	void hexSystemMode();
+
 private:
     Ui::calculator_ver2Class ui;
 
 protected:
-    void keyPressEvent(QKeyEvent* event);
+    void keyPressEvent(QKeyEvent* event); // Keyboard button press event
 };

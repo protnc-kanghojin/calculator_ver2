@@ -1,14 +1,14 @@
 #include "calculator_ver2.h"
-#include "stack.h"
+#include "mainCalculator.h"
 #include <cstring>
 
 calculator_ver2::calculator_ver2(QWidget *parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
-    this->setFixedSize(250, 380);
+    this->setFixedSize(250,400);
 
-	// Button click function
+	// Number button
 	connect(ui.num0Btn,		 &QPushButton::clicked, this, &calculator_ver2::num0_Clicked);
 	connect(ui.num1Btn,		 &QPushButton::clicked, this, &calculator_ver2::num1_Clicked);
 	connect(ui.num2Btn,		 &QPushButton::clicked, this, &calculator_ver2::num2_Clicked);
@@ -20,15 +20,22 @@ calculator_ver2::calculator_ver2(QWidget *parent)
 	connect(ui.num8Btn,		 &QPushButton::clicked, this, &calculator_ver2::num8_Clicked);
 	connect(ui.num9Btn,		 &QPushButton::clicked, this, &calculator_ver2::num9_Clicked);
 
-	// Calculation option
+	// Four rules calculation button
 	connect(ui.plusBtn,		 &QPushButton::clicked, this, &calculator_ver2::plusBtn_Clicked);
 	connect(ui.minusBtn,		 &QPushButton::clicked, this, &calculator_ver2::minusBtn_Clicked);
 	connect(ui.multiplyBtn,	 &QPushButton::clicked, this, &calculator_ver2::multiplyBtn_Clicked);
 	connect(ui.divisionBtn,	 &QPushButton::clicked, this, &calculator_ver2::divisionBtn_Clicked);
 	connect(ui.resultBtn,		 &QPushButton::clicked, this, &calculator_ver2::resultBtn_Clicked);
 
+	// Function button
 	connect(ui.delAllBtn,		 &QPushButton::clicked, this, &calculator_ver2::deleteAll_Clicked);
 	connect(ui.delOneBtn,	 &QPushButton::clicked, this, &calculator_ver2::deleteOne_Clicked);
+
+	// Number system mode alternation
+	connect(ui.binModeBtn,   &QPushButton::clicked, this, &calculator_ver2::binSystemMode);
+	connect(ui.octModeBtn,   &QPushButton::clicked, this, &calculator_ver2::octSystemMode);
+	connect(ui.decModeBtn,  &QPushButton::clicked, this, &calculator_ver2::decSystemMode);
+	connect(ui.hexModeBtn,  &QPushButton::clicked, this, &calculator_ver2::hexSystemMode);
 }
 
 void calculator_ver2::keyPressEvent(QKeyEvent* event)
@@ -211,12 +218,12 @@ void calculator_ver2::resultBtn_Clicked()
 
 void calculator_ver2::deleteAll_Clicked()
 {
-	ui.progress->setText("");
-	ui.result->setText("");
-	ui.binNumber->setText("");
-	ui.octNumber->setText("");
-	ui.decNumber->setText("");
-	ui.hexNumber->setText("");
+	ui.progress->setText("Input Formula");
+	ui.result->setText("Result");
+	ui.binNumber->setText("BINARY");
+	ui.octNumber->setText("OCTAL");
+	ui.decNumber->setText("DECIMAL");
+	ui.hexNumber->setText("HEXADECIMAL");
 
 	progress = "";
 	finalResult = '0';
@@ -258,4 +265,20 @@ void calculator_ver2::decToHex()
 {
 	QString hex = QString("%1").arg(ui.result->text().toInt(), 0, 16);
 	ui.hexNumber->setText(hex);
+}
+
+void calculator_ver2::binSystemMode()
+{
+}
+
+void calculator_ver2::octSystemMode()
+{
+}
+
+void calculator_ver2::decSystemMode()
+{
+}
+
+void calculator_ver2::hexSystemMode()
+{
 }

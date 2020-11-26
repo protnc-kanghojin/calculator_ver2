@@ -1,5 +1,4 @@
-#include "stack.h"
-
+#include "mainCalculator.h"
 
 int mainCalculator::priority(char ch)
 {
@@ -101,6 +100,5 @@ int mainCalculator::result()
 		i++;
 	}
 	num3 = stackOne.pop();
-
 	return num3;
 }
