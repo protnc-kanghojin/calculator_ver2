@@ -107,14 +107,6 @@ void calculator_ver2::keyPressEvent(QKeyEvent* event)
 		divisionBtn_Clicked();
 		break;
 
-	case Qt::Key_Enter:
-		resultBtn_Clicked();
-		break;
-
-	case Qt::Key_Return:
-		resultBtn_Clicked();
-		break;
-
 	case Qt::Key_Delete:
 		deleteAll_Clicked();
 		break;
