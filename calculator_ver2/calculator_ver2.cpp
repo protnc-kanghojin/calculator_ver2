@@ -6,7 +6,7 @@ calculator_ver2::calculator_ver2(QWidget *parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
-    this->setFixedSize(250,400);
+    this->setFixedSize(250, 350);
 
 	// Number button
 	connect(ui.num0Btn,		 &QPushButton::clicked, this, &calculator_ver2::num0_Clicked);
@@ -25,7 +25,6 @@ calculator_ver2::calculator_ver2(QWidget *parent)
 	connect(ui.minusBtn,		 &QPushButton::clicked, this, &calculator_ver2::minusBtn_Clicked);
 	connect(ui.multiplyBtn,	 &QPushButton::clicked, this, &calculator_ver2::multiplyBtn_Clicked);
 	connect(ui.divisionBtn,	 &QPushButton::clicked, this, &calculator_ver2::divisionBtn_Clicked);
-	connect(ui.resultBtn,		 &QPushButton::clicked, this, &calculator_ver2::resultBtn_Clicked);
 
 	// Function button
 	connect(ui.delAllBtn,		 &QPushButton::clicked, this, &calculator_ver2::deleteAll_Clicked);
@@ -44,42 +43,52 @@ void calculator_ver2::keyPressEvent(QKeyEvent* event)
 	{
 	case Qt::Key_0:
 		num0_Clicked();
+		resultBtn_Clicked();
 		break;
 
 	case Qt::Key_1:
 		num1_Clicked();
+		resultBtn_Clicked();
 		break;
 
 	case Qt::Key_2:
 		num2_Clicked();
+		resultBtn_Clicked();
 		break;
 
 	case Qt::Key_3:
 		num3_Clicked();
+		resultBtn_Clicked();
 		break;
 
 	case Qt::Key_4:
 		num4_Clicked();
+		resultBtn_Clicked();
 		break;
 
 	case Qt::Key_5:
 		num5_Clicked();
+		resultBtn_Clicked();
 		break;
 
 	case Qt::Key_6:
 		num6_Clicked();
+		resultBtn_Clicked();
 		break;
 
 	case Qt::Key_7:
 		num7_Clicked();
+		resultBtn_Clicked();
 		break;
 
 	case Qt::Key_8:
 		num8_Clicked();
+		resultBtn_Clicked();
 		break;
 
 	case Qt::Key_9:
 		num9_Clicked();
+		resultBtn_Clicked();
 		break;
 
 	case Qt::Key_Plus:
@@ -112,6 +121,7 @@ void calculator_ver2::keyPressEvent(QKeyEvent* event)
 		
 	case Qt::Key_Backspace:
 		deleteOne_Clicked();
+		resultBtn_Clicked();
 		break;
 
 	default:
@@ -123,60 +133,70 @@ void calculator_ver2::num0_Clicked()
 {
 	progress += '0';
 	ui.progress->setText(progress);
+	resultBtn_Clicked();
 }
 
 void calculator_ver2::num1_Clicked()
 {
 	progress += '1';
 	ui.progress->setText(progress);
+	resultBtn_Clicked();
 }
 
 void calculator_ver2::num2_Clicked()
 {
 	progress += '2';
 	ui.progress->setText(progress);
+	resultBtn_Clicked();
 }
 
 void calculator_ver2::num3_Clicked()
 {
 	progress += '3';
 	ui.progress->setText(progress);
+	resultBtn_Clicked();
 }
 
 void calculator_ver2::num4_Clicked()
 {
 	progress += '4';
 	ui.progress->setText(progress);
+	resultBtn_Clicked();
 }
 
 void calculator_ver2::num5_Clicked()
 {
 	progress += '5';
 	ui.progress->setText(progress);
+	resultBtn_Clicked();
 }
 
 void calculator_ver2::num6_Clicked()
 {
 	progress += '6';
 	ui.progress->setText(progress);
+	resultBtn_Clicked();
 }
 
 void calculator_ver2::num7_Clicked()
 {
 	progress += '7';
 	ui.progress->setText(progress);
+	resultBtn_Clicked();
 }
 
 void calculator_ver2::num8_Clicked()
 {
 	progress += '8';
 	ui.progress->setText(progress);
+	resultBtn_Clicked();
 }
 
 void calculator_ver2::num9_Clicked()
 {
 	progress += '9';
 	ui.progress->setText(progress);
+	resultBtn_Clicked();
 }
 
 void calculator_ver2::plusBtn_Clicked()
