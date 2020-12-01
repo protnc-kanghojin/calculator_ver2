@@ -29,12 +29,7 @@ calculator_ver2::calculator_ver2(QWidget *parent)
 	// Function button
 	connect(ui.delAllBtn,		 &QPushButton::clicked, this, &calculator_ver2::deleteAll_Clicked);
 	connect(ui.delOneBtn,	 &QPushButton::clicked, this, &calculator_ver2::deleteOne_Clicked);
-
-	// Number system mode alternation
-	connect(ui.binModeBtn,   &QPushButton::clicked, this, &calculator_ver2::binSystemMode);
-	connect(ui.octModeBtn,   &QPushButton::clicked, this, &calculator_ver2::octSystemMode);
-	connect(ui.decModeBtn,  &QPushButton::clicked, this, &calculator_ver2::decSystemMode);
-	connect(ui.hexModeBtn,  &QPushButton::clicked, this, &calculator_ver2::hexSystemMode);
+	connect(ui.resultBtn,		 &QPushButton::clicked, this, &calculator_ver2::resultBtn_Clicked);
 }
 
 void calculator_ver2::keyPressEvent(QKeyEvent* event)
@@ -43,52 +38,42 @@ void calculator_ver2::keyPressEvent(QKeyEvent* event)
 	{
 	case Qt::Key_0:
 		num0_Clicked();
-		resultBtn_Clicked();
 		break;
 
 	case Qt::Key_1:
 		num1_Clicked();
-		resultBtn_Clicked();
 		break;
 
 	case Qt::Key_2:
 		num2_Clicked();
-		resultBtn_Clicked();
 		break;
 
 	case Qt::Key_3:
 		num3_Clicked();
-		resultBtn_Clicked();
 		break;
 
 	case Qt::Key_4:
 		num4_Clicked();
-		resultBtn_Clicked();
 		break;
 
 	case Qt::Key_5:
 		num5_Clicked();
-		resultBtn_Clicked();
 		break;
 
 	case Qt::Key_6:
 		num6_Clicked();
-		resultBtn_Clicked();
 		break;
 
 	case Qt::Key_7:
 		num7_Clicked();
-		resultBtn_Clicked();
 		break;
 
 	case Qt::Key_8:
 		num8_Clicked();
-		resultBtn_Clicked();
 		break;
 
 	case Qt::Key_9:
 		num9_Clicked();
-		resultBtn_Clicked();
 		break;
 
 	case Qt::Key_Plus:
@@ -113,6 +98,13 @@ void calculator_ver2::keyPressEvent(QKeyEvent* event)
 		
 	case Qt::Key_Backspace:
 		deleteOne_Clicked();
+		break;
+
+	case Qt::Key_Return:
+		resultBtn_Clicked();
+		break;
+
+	case Qt::Key_Enter:
 		resultBtn_Clicked();
 		break;
 
@@ -125,70 +117,60 @@ void calculator_ver2::num0_Clicked()
 {
 	progress += '0';
 	ui.progress->setText(progress);
-	resultBtn_Clicked();
 }
 
 void calculator_ver2::num1_Clicked()
 {
 	progress += '1';
 	ui.progress->setText(progress);
-	resultBtn_Clicked();
 }
 
 void calculator_ver2::num2_Clicked()
 {
 	progress += '2';
 	ui.progress->setText(progress);
-	resultBtn_Clicked();
 }
 
 void calculator_ver2::num3_Clicked()
 {
 	progress += '3';
 	ui.progress->setText(progress);
-	resultBtn_Clicked();
 }
 
 void calculator_ver2::num4_Clicked()
 {
 	progress += '4';
 	ui.progress->setText(progress);
-	resultBtn_Clicked();
 }
 
 void calculator_ver2::num5_Clicked()
 {
 	progress += '5';
 	ui.progress->setText(progress);
-	resultBtn_Clicked();
 }
 
 void calculator_ver2::num6_Clicked()
 {
 	progress += '6';
 	ui.progress->setText(progress);
-	resultBtn_Clicked();
 }
 
 void calculator_ver2::num7_Clicked()
 {
 	progress += '7';
 	ui.progress->setText(progress);
-	resultBtn_Clicked();
 }
 
 void calculator_ver2::num8_Clicked()
 {
 	progress += '8';
 	ui.progress->setText(progress);
-	resultBtn_Clicked();
 }
 
 void calculator_ver2::num9_Clicked()
 {
 	progress += '9';
 	ui.progress->setText(progress);
-	resultBtn_Clicked();
 }
 
 void calculator_ver2::plusBtn_Clicked()
@@ -277,20 +259,4 @@ void calculator_ver2::decToHex()
 {
 	QString hex = QString("%1").arg(ui.result->text().toInt(), 0, 16);
 	ui.hexNumber->setText(hex);
-}
-
-void calculator_ver2::binSystemMode()
-{
-}
-
-void calculator_ver2::octSystemMode()
-{
-}
-
-void calculator_ver2::decSystemMode()
-{
-}
-
-void calculator_ver2::hexSystemMode()
-{
 }

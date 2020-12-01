@@ -46,12 +46,6 @@ public slots:
 	void decToDec();
 	void decToHex();
 
-	// Number system mode alternation
-	void binSystemMode();
-	void octSystemMode();
-	void decSystemMode();
-	void hexSystemMode();
-
 private:
     Ui::calculator_ver2Class ui;
 

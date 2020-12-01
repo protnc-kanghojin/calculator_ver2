@@ -93,8 +93,8 @@ int mainCalculator::result()
 			}
 			else if (ch == '-') number = num2 - num1;
 			else if (ch == '*') number = num2 * num1;
+			else if (ch == '/' && num1 == 0) number = 0; // Divide 0 is error... so show 0
 			else if (ch == '/') number = num2 / num1;
-			else if (ch == '/' && num1 == 0) number = 0;
 			stackOne.push(number);
 		}
 		i++;
