@@ -39,6 +39,7 @@ public slots:
 	void deleteAll_Clicked();
 	void deleteOne_Clicked();
 	void exclamBtn_Clicked();
+	void reverse_Clicked();
 
 	// Number system conversion
 	void numberSystemConversion();

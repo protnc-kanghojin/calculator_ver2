@@ -31,6 +31,7 @@ calculator_ver2::calculator_ver2(QWidget *parent)
 	connect(ui.delOneBtn,	 &QPushButton::clicked, this, &calculator_ver2::deleteOne_Clicked);
 	connect(ui.resultBtn,		 &QPushButton::clicked, this, &calculator_ver2::resultBtn_Clicked);
 	connect(ui.exclamBtn,		 &QPushButton::clicked, this, &calculator_ver2::exclamBtn_Clicked);
+	connect(ui.reverseBtn,	 &QPushButton::clicked, this, &calculator_ver2::reverse_Clicked);
 }
 
 void calculator_ver2::keyPressEvent(QKeyEvent* event)
@@ -255,6 +256,15 @@ void calculator_ver2::exclamBtn_Clicked()
 		}
 		ui.result->setText(QString::number(fac));
 	}
+}
+
+void calculator_ver2::reverse_Clicked()
+{
+	int m_reveseNumber = ui.result->text().toInt();
+	int reverseNumber = -m_reveseNumber;
+
+	ui.result->setText(QString::number(reverseNumber)); 
+	numberSystemConversion();
 }
 
 void calculator_ver2::numberSystemConversion()
