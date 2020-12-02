@@ -38,6 +38,7 @@ public slots:
 	// Function button
 	void deleteAll_Clicked();
 	void deleteOne_Clicked();
+	void exclamBtn_Clicked();
 
 	// Number system conversion
 	void numberSystemConversion();

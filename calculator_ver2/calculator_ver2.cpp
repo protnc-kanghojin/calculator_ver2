@@ -30,6 +30,7 @@ calculator_ver2::calculator_ver2(QWidget *parent)
 	connect(ui.delAllBtn,		 &QPushButton::clicked, this, &calculator_ver2::deleteAll_Clicked);
 	connect(ui.delOneBtn,	 &QPushButton::clicked, this, &calculator_ver2::deleteOne_Clicked);
 	connect(ui.resultBtn,		 &QPushButton::clicked, this, &calculator_ver2::resultBtn_Clicked);
+	connect(ui.exclamBtn,		 &QPushButton::clicked, this, &calculator_ver2::exclamBtn_Clicked);
 }
 
 void calculator_ver2::keyPressEvent(QKeyEvent* event)
@@ -106,6 +107,10 @@ void calculator_ver2::keyPressEvent(QKeyEvent* event)
 
 	case Qt::Key_Enter:
 		resultBtn_Clicked();
+		break;
+
+	case Qt::Key_exclamdown:
+		deleteAll_Clicked();
 		break;
 
 	default:
@@ -227,6 +232,26 @@ void calculator_ver2::deleteOne_Clicked()
 {
 	progress.chop(1);
 	ui.progress->setText(progress);
+}
+
+void calculator_ver2::exclamBtn_Clicked()
+{
+	int m_fac = ui.progress->text().toInt();
+	int fac = 1;
+
+	if (m_fac <= 1)
+	{
+		ui.result->setText("1");
+	}
+	else
+	{
+		while (m_fac != 1)
+		{
+			fac = fac * m_fac;
+			m_fac--;
+		}
+		ui.result->setText(QString::number(fac));
+	}
 }
 
 void calculator_ver2::numberSystemConversion()
