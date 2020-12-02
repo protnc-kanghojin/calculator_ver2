@@ -8,7 +8,7 @@ int mainCalculator::priority(char ch)
 }
 
 
-double mainCalculator::calculate(char infix[])
+int mainCalculator::calculate(char infix[])
 {
 	for (int i = 0; i < 100; i++) buffer[i] = infix[i];
 	infixToPostfix();

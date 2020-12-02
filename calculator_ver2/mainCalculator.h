@@ -50,5 +50,5 @@ private:
 	int priority(char);
 
 public:
-	double calculate(char[]);
+	int calculate(char[]);
 };

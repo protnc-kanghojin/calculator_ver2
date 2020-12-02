@@ -209,7 +209,7 @@ void calculator_ver2::resultBtn_Clicked()
 	finalResult = ui.progress->text();
 	QByteArray byteName = finalResult.toLocal8Bit();
 	char* cfileName = byteName.data();
-	double answer = formulaInput.calculate(cfileName);
+	int answer = formulaInput.calculate(cfileName);
 	QString s = QString::number(answer);
 	ui.result->setText(s);
 
