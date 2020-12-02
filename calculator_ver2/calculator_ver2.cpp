@@ -109,8 +109,8 @@ void calculator_ver2::keyPressEvent(QKeyEvent* event)
 		resultBtn_Clicked();
 		break;
 
-	case Qt::Key_exclamdown:
-		deleteAll_Clicked();
+	case Qt::Key_Exclam:
+		exclamBtn_Clicked();
 		break;
 
 	default:
@@ -238,6 +238,9 @@ void calculator_ver2::exclamBtn_Clicked()
 {
 	int m_fac = ui.progress->text().toInt();
 	int fac = 1;
+
+	progress += '!';
+	ui.progress->setText(progress);
 
 	if (m_fac <= 1)
 	{
