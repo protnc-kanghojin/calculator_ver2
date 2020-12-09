@@ -10,7 +10,11 @@ int mainCalculator::priority(char ch)
 
 int mainCalculator::calculate(char infix[])
 {
-	for (int i = 0; i < 100; i++) buffer[i] = infix[i];
+	for (int i = 0; i < 100; i++) 
+	{
+		buffer[i] = infix[i];
+	}
+
 	infixToPostfix();
 
 	return result();

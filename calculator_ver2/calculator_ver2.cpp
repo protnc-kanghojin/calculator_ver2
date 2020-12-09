@@ -237,8 +237,9 @@ void calculator_ver2::deleteOne_Clicked()
 
 void calculator_ver2::exclamBtn_Clicked()
 {
-	int m_fac = ui.progress->text().toInt();
-	int fac = 1;
+	quint64 m_fac = ui.progress->text().toULongLong();
+	quint64 fac = 1;
+	
 
 	progress += '!';
 	ui.progress->setText(progress);
